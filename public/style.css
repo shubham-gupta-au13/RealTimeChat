@@ -79,13 +79,13 @@ textarea{
 }
 
 .incoming{
-    color: black;
-    background-color: #47ff63
+    
+    background-color: #eedbdb;
 }
 
 .outgoing{
     color: black;
-    background-color: #ff4787;
+    background-color:  #e7eff6;
     margin-left: 600px;
 }
 
@@ -96,6 +96,8 @@ textarea{
     color: white;
     background-color: #4267B2;
     font-size: 14px;
+    text-align: center;
+    word-spacing: 2px;
 }
 
 
@@ -104,8 +106,23 @@ textarea{
     background-color: green;
     width: 160px;
     margin-bottom: 2rem;
+    text-align: center;
+    word-spacing: 2px;
    
 }
+
+.grey{
+    
+    color: white;
+    background-color: green;
+    width: 160px;
+    margin: 2rem auto;
+    text-align: center;
+    word-spacing: 2px;
+    
+}
+
+
 
 .message p{
     font-size: 0.8rem;

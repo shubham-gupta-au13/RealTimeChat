@@ -6,11 +6,25 @@ do{
 let textArea = document.querySelector("#textarea");
 let mesageArea = document.querySelector(".message-area");
 const socket = io();
+let today = new Date();
+let hours = today.getHours();
+var ampm = hours >= 12 ? 'pm' : 'am';
+let greet = document.createElement("h3");
+
+if(ampm === "pm"){
+    greet.innerText = " Good Evening" + " " + userName;
+}
+else{
+    greet.innerText = " Good Mornning " + " " +  userName;
+}
+greet.classList.add("grey");
+mesageArea.appendChild(greet)
+
 
 socket.emit('newUser',userName);
 socket.on("newUser",function(userName){
 
-    console.log("hoto");
+    
     let info = document.createElement("h3");
     info.classList.add("style")
     info.innerText = userName + " Joined The Chat...";
