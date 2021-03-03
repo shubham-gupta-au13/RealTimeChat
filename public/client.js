@@ -14,21 +14,23 @@ socket.on("newUser",function(userName){
     let info = document.createElement("h3");
     info.classList.add("style")
     info.innerText = userName + " Joined The Chat...";
-
-    // info.style.color = "green";
-    // info.style.backgroundColor = "yellow";
-    // info.style.display = "inline-block";
     mesageArea.appendChild(info)
     scrollTop()
 })
-
-
-
 textArea.addEventListener("keyup",function(e){
 
    
     if(e.key === "Enter"){
-        sendMessage(e.target.value)
+        for(let i=0; i < e.target.value.length; i++)
+        {
+            if(e.target.value.charCodeAt(i) !=10 && e.target.value.charCodeAt(i) !=32 ){
+                sendMessage(e.target.value)
+                break;
+            }
+
+        }
+       
+        
     }
 })
 
@@ -39,7 +41,7 @@ function sendMessage(userMsg){
         name : userName,
         msg: userMsg.trim()
     }
-    console.log(message)
+    
 
     //Append Msg
 

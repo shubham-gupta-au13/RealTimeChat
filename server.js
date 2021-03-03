@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const PORT = process.env.PORT || 5005;
+const PORT = process.env.PORT || 80;
 
 app.use(express.static("public"))
 
@@ -16,8 +16,6 @@ const server = app.listen(PORT,function(){
 })
 
 const io = require("socket.io")(server);
-//console.log(io);
-
 io.on("connection",function(socket){
 
     console.log("connected");
