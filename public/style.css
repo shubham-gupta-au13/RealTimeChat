@@ -78,13 +78,13 @@ textarea{
 }
 
 .incoming{
-    color: #fff;
-    background-color: #8F8BE8
+    color: black;
+    background-color: #47ff63
 }
 
 .outgoing{
-    color: #787986;
-    background-color: #e9eafd;
+    color: black;
+    background-color: #ff4787;
     margin-left: 600px;
 }
 
@@ -92,21 +92,22 @@ textarea{
     position: absolute;
     top: -20px;
     left: 0px;
-    color:#333;
+    color: white;
+    background-color: #4267B2;
     font-size: 14px;
 }
 
 
 .style{
-    color: green;
-    background-color: yellow;
+    color: white;
+    background-color: green;
     width: 160px;
     margin-bottom: 2rem;
    
 }
 
 .message p{
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     font-weight: 500;
     
 }
