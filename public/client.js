@@ -8,6 +8,7 @@ let mesageArea = document.querySelector(".message-area");
 const socket = io();
 let today = new Date();
 let hours = today.getHours();
+let min = today.getMinutes();
 var ampm = hours >= 12 ? 'pm' : 'am';
 let greet = document.createElement("h3");
 
@@ -70,12 +71,17 @@ function sendMessage(userMsg){
 
 function appendMsg(type,message){
 
+    let today = new Date();
+    let hours = today.getHours();
+    let min = today.getMinutes();
     let mainDiv = document.createElement("div");
     let className = type;
+    let c = ":"
     mainDiv.classList.add(className,"message")
     let markup = `
                    <h4>${message.name}</h4>
                    <p>${message.msg}</p>
+                   <span>${hours} ${c} ${min}</span>
            
                 `
     mainDiv.innerHTML = markup;
