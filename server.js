@@ -16,12 +16,14 @@ const server = app.listen(PORT,function(){
 })
 
 const io = require("socket.io")(server);
+const users = {};
 io.on("connection",function(socket){
 
     console.log("connected");
 
     socket.on("newUser",function(userName){
 
+        users[socket.id] = userName;
         socket.broadcast.emit('newUser',userName)
 
     })
@@ -31,5 +33,10 @@ io.on("connection",function(socket){
         socket.broadcast.emit('sendMessage',msg)
 
     })
+
+    socket.on("disconnect", function(Message) {
+        socket.broadcast.emit('left',users[socket.id])
+        delete users[socket.id];
+      });
     
 })

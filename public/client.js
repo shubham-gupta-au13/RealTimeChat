@@ -2,10 +2,11 @@ let userName;
 do{
     userName = prompt("Enter user Name")
 }while(!userName)
-
+var tone = new Audio("./sound.mp3");
 let textArea = document.querySelector("#textarea");
 let mesageArea = document.querySelector(".message-area");
 const socket = io();
+
 let today = new Date();
 let hours = today.getHours();
 let min = today.getMinutes();
@@ -22,6 +23,7 @@ greet.classList.add("grey");
 mesageArea.appendChild(greet)
 
 
+
 socket.emit('newUser',userName);
 socket.on("newUser",function(userName){
 
@@ -30,6 +32,7 @@ socket.on("newUser",function(userName){
     info.classList.add("style")
     info.innerText = userName + " Joined The Chat...";
     mesageArea.appendChild(info)
+    tone.play();
     scrollTop()
 })
 textArea.addEventListener("keyup",function(e){
@@ -86,6 +89,9 @@ function appendMsg(type,message){
                 `
     mainDiv.innerHTML = markup;
     mesageArea.appendChild(mainDiv);
+    if(type === "incoming"){
+        tone.play();
+    }
 
 }
 
@@ -96,6 +102,19 @@ socket.on("sendMessage",function(msg){
     appendMsg("incoming",msg)
     scrollTop()
 })
+
+socket.on("left",function(name){
+
+    let info = document.createElement("h3");
+    info.classList.add("style")
+    info.style.backgroundColor = "red";
+    info.innerText = name + " left The Chat...";
+    mesageArea.appendChild(info);
+    tone.play();
+    scrollTop()
+})
+// left user
+
 
 function scrollTop(){
      mesageArea.scrollTop = mesageArea.scrollHeight;
